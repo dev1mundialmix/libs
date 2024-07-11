@@ -3,19 +3,16 @@ import cx_Oracle
 from .exceptions import DatabaseError, ConnectionError, QueryError
 
 class OracleDatabase():
-    def __init__(self, user, password, dns, service_name, port, debug=False):
+    _oracle_client_initialized = False
+
+    def __init__(self, user, password, dns, service_name, port):
         self.user = user
         self.password = password
         self.dns = dns
         self.service_name = service_name
         self.port = port
-        self.debug = debug
         self.connection = None
         self.cursor = None
-
-        if self.debug:
-            current_dir = os.path.dirname(os.path.realpath(__file__))
-            cx_Oracle.init_oracle_client(lib_dir=current_dir + "/dll")
 
     def create_connection(self):
         """Estabelece a conexão com o banco de dados Oracle."""

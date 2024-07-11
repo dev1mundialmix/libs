@@ -1,10 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='common_libs',
+    name='mundialmix',
     version='0.1',
-    packages=find_packages(),
+    packages=find_packages(include=['mundialmix', 'mundialmix.*']),
     install_requires=[
         'cx_Oracle',
     ],
+    include_package_data=True,
 )

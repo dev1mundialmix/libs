@@ -1,0 +1,2 @@
+# common/MANIFEST.in
+recursive-include mundialmix/database *.dll
